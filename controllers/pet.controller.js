@@ -1,11 +1,12 @@
 const Pet = require("../models/pet.model");
+const mongoose = require("mongoose");
 
 module.exports.index = ({ req, res }) => {
   res.json({
     message: "Pet Controller",
   });
 };
-module.exports.getPets = (req, res) => {
+module.exports.getPets = async (req, res) => {
   Pet.find({}, (err, pets) => {
     if (err) {
       res.send(err);

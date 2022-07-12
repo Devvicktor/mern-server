@@ -1,0 +1,17 @@
+version: "1"
+services:
+  app:
+    container_name: jolly_kilby
+    image: apne
+    ports:
+      - "8000:8000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo-express
+    image: mongo-express
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
